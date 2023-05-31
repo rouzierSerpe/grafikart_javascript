@@ -4,9 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Les boucles</title>
 </head>
 <body>
-    
+    <script>
+        // EXERCICE 1 : créer un algorithme qui demande à l'utilisateur un chiffre entre 0 et 10. Vérifier que le chiffre est bien entre 0 et 10. Si ça n'est pas le cas, afficher un message d'erreur en console pour dire qu'il y a une erreur. Si le chiffre est bien entre 0 et 10, afficher tous les chiffres qui sont en dessous
+        // on demande à l'utilisateur de taper son chiffre, qui doit être compris entre 0 et 10
+        // let chiffre = prompt('Entrez un nombre');
+        // if(chiffre > 10 || chiffre < 0) {
+        //     console.log("Le nombre, n'est pas compris entre 0 et 10")
+        // } else {
+        //     // while(chiffre >= 0) {
+        //     //     // on affiche le chiffre de l'utilisateur
+        //     //     console.log(chiffre)
+        //     //     // on décrémente ce chiffre
+        //     //     // chiffre = chiffre - 1;
+        //     //     chiffre--
+        //     // }
+
+        //     for(let i = chiffre; i >= 0; i--) {
+        //         console.log(i)
+        //     }
+        // }
+
+        // EXERCICE 2 : créer une variable guess qui contient un nombre. Demander à l'utilisateur de deviner ce nombre. si il le trouve, le féliciter, sinon lui redemander un nombre
+        let guess = 8;
+        // prompt donne une valeur qui n'est pas un nombre, si on veut un nombre, pour convertir la réponse, le multiplier par 1
+        let nombre //= prompt('Votre chiffre') * 1;
+        // if(nombre === guess) {
+        //     console.log(`Bravo, vous avez trouvé le nombre mystère qui est ${guess}`);
+        // } else {
+        //     while(nombre !== guess) {
+        //         const nombre = prompt('Votre chiffre') * 1;
+        //     } 
+        // }
+        while(nombre !== guess) {
+            nombre = prompt('Votre chiffre') * 1;
+            // if(nombre !== guess) {
+            //     console.log('Dommage')
+            // }
+
+            // pour dire si le nombre donné est plus petit ou plus grand que le chiffre mystère
+            if(nombre < guess) {
+                console.log('Plus');
+            } else if (nombre > guess) {
+                console.log('Moins');
+            }
+        }
+        console.log(`Bravo, vous avez trouvé le nombre mystère qui est ${guess}`);
+    </script>
 </body>
 </html>
