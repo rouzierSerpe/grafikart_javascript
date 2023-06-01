@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les fonctions</title>
+</head>
+<body>
+    <script>
+        // function canDrive (age, pays) {
+        //     if(
+        //         (pays === 'FR' && age >= 18) ||
+        //         (pays === 'US' && age >= 16)
+        //     ) {
+        //         return true
+        //     }
+        //     return false
+        // }
+
+        // const canDrive = function (age, pays) {
+        //     if(
+        //         (pays === 'FR' && age >= 18) ||
+        //         (pays === 'US' && age >= 16)
+        //     ) {
+        //         return true
+        //     }
+        //     return false
+        // }
+        // console.log(canDrive(19, 'FR'))
+
+        // fonction utilisant this
+        // const a = {
+        //     firstname: 'John',
+        //     lastname: 'Doe',
+        //     fullname: function() {
+        //         console.log(`${this.firstname} ${this.lastname}`)
+        //     }
+        // }
+        // a.fullname()
+        // console.log('Hello'.toUpperCase())
+
+        // fonction fléchée
+        // const maFonction = (param1, param2) => {
+        //     console.log(param1, param2)
+        // }
+        // maFonction(1, 2)
+
+
+        // EXERCICE 1
+        // on crée un nombre entre 0 et 10
+        // 3 essais pour deviner le nombre
+        // fonction isRight(n)
+        // guess()
+        // function getRandomInt(max) {
+        //     return Math.floor(Math.random() * (max +1))
+        // }
+
+        // const solution = getRandomInt(10)
+        //  console.log(solution)
+
+        // function isRight(n) {
+        //     return solution === n
+        // }
+
+        // function guess() {
+        //     const number = prompt('Entrer un chiffre') * 1
+        //     return isRight(number)
+        // }
+
+        // for(i = 0; i < 3; i++) {
+        //     if(guess()) {
+        //         console.log('Bravo');
+        //         break;
+        //     } else if(i === 2) {
+        //         console.log('Vous avez perdu')
+        //     }
+        // }
+
+
+        // EXERCICE 2
+        // dire si un nombre est premier ou non
+        function isPremier(n) {
+            if(n < 2) {
+                return false
+            }
+            for(let i = n -1; i > 1; i--) {
+                // console.log(i) 
+                if(n % i === 0) {
+                    return false;
+                };
+            }
+            return true
+        }
+
+        console.log('0', isPremier(0))
+        console.log('1', isPremier(1))
+        console.log('2', isPremier(2))
+        console.log('3', isPremier(3))
+        console.log('11', isPremier(11))
+        console.log('12', isPremier(12))
+
+    </script>
+</body>
+</html>

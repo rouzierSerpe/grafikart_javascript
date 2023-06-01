@@ -68,7 +68,7 @@
         // }
 
         const year = 2023;
-        const birthyear = prompt('Quelle est votre année de naissance ?')
+        const birthyear = prompt('Quelle est votre année de naissance ?');
         const calcAge = year - birthyear;
 
         if(calcAge <= 13) {
@@ -77,6 +77,29 @@
             console.log(`Votre âge est de ${calcAge} ans, vous pouvez regarder Matrix`)
         } else {
             console.log(`Votre âge est de ${calcAge} ans, vous pouvez regarder Evil dead`)
+        }
+
+
+        // EXERCICE 2
+        const a = prompt('Entrez un premier nombre');
+        const b = prompt('Entrez un second nombre');
+        const result = a * b;
+        let signe
+
+        // if(result > 0) {
+        //     console.log(`${a} x ${b} = ${result} est positif`)
+        // } else {
+        //     console.log(`${a} x ${b} = ${result} est négatif`)
+        // }
+        if(isNaN(result)) {
+            console.log('Opération impossible')
+        } else {
+            if(result > 0) {
+                signe = 'positif'
+            } else {
+                signe = 'négatif'
+            }
+            console.log(`${a} x ${b} = ${result} est ${signe}`)
         }
     </script>
 </body>
