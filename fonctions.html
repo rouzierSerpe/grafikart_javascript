@@ -132,10 +132,20 @@
             Bonjour: false,
         }
         for(let word in words) {
-            if(isPalindrome(word) !== words[word]) {
-                console.error(`isPalindrome(${word}) aurait dû renvoyer ${word}`)
+            // if(isPalindrome(word) !== words[word]) {
+            //     console.error(`isPalindrome(${word}) aurait dû renvoyer ${words[word]}`)
+            // } else {
+            //     console.log(`isPalindrome(${word}) return ${isPalindrome(word)} et renvoie bien ${words[word]}`)
+            // }
+
+            if(isPalindrome(word)) {
+                console.log(`${word} est un palindrome`)
+            } else {
+                console.log(`${word} n'est pas un palindrome`)
             }
         }
+
+        
 
 
         // EXERCICE 4
