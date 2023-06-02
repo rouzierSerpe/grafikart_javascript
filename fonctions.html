@@ -144,7 +144,6 @@
         // on organise les élèves en fonction de la moyenne la plus élevée
         // on affiche en console un top 3 des élèves
 
-
         const students = [
             {
                 name: 'John',
@@ -167,6 +166,25 @@
                 notes: [18, 17, 18, 19, 12]
             }
         ]
+
+        const moyenne = (notes) => {
+            let sum = 0;
+            for(let note of notes) {
+                sum = sum + note;
+            }
+            //console.log(sum / notes.length);
+            return sum / notes.length;
+        }
+        //moyenne([10, 20])
+
+        const compareStudent = (a, b) => {
+            return a.moyenne - b.moyenne  // si b > a, donnera qch de négatif ; si a > b, donnera qch de positif
+        }
+
+        for(let student of students) {
+            student.moyenne = moyenne(student.notes)
+        }
+        console.log(students)
 
     </script>
 </body>
