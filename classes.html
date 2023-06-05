@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les classes</title>
+</head>
+<body>
+    <script>
+        const moyenne = (notes) => {
+            let sum = 0;
+            for(let note of notes) {
+                sum = sum + note;
+            }
+            //console.log(sum / notes.length);
+            return sum / notes.length;
+        }
+
+
+        // les prototypes sont des fonctions
+        
+        // type personnalisé
+        class Student {              // class et fonction
+            // propriété
+            ecole = 'Jules Ferry';
+            _notes = [];
+
+            // constructeur, méthode
+            constructor (firstname, lastname) {
+                //console.log(this)
+                // définir des propriétés à l'intérieur des objets 'this'
+                this.firstname = firstname;
+                this.lastname = lastname;
+            }
+
+            // création d'une méthode
+                // setNotes(notes) {
+                //     this.notes = notes
+                // }
+
+            set notes (value) {
+                if(Array.isArray(value)) {
+                    this._notes = value;
+                }  
+            }
+
+            get name () {
+                return `${this.firstname} ${this.lastname}`
+            }
+
+            //création d'une méthode
+            // il peut passer dans la classe au-dessus si il a une moyenne > à 10
+            canPass() {
+                return moyenne(this._notes) >= 10;
+            }
+        }
+
+        const john = new Student('John', 'Doe')
+        const jane = new Student('Jane', 'Dupuis')
+        john.notes = [19];
+        jane.notes = [15, 18, 19];
+        // john.setNotes([10, 10, 9]);
+        // jane.setNotes([15, 18, 19]);
+        console.log(john.name);
+        console.log(john.canPass(), jane.canPass());
+    </script>
+</body>
+</html>
