@@ -188,13 +188,33 @@
         //moyenne([10, 20])
 
         const compareStudent = (a, b) => {
-            return a.moyenne - b.moyenne  // si b > a, donnera qch de négatif ; si a > b, donnera qch de positif
+            return b.moyenne - a.moyenne  // si b > a, donnera qch de négatif ; si a > b, donnera qch de positif
         }
 
         for(let student of students) {
-            student.moyenne = moyenne(student.notes)
+            student.moyenne = moyenne(student.notes);
+            student.worst = Math.min(...student.notes);
+            student.best = Math.max(...student.notes)
         }
+
+        // pour afficher le top 3 des meilleurs élèves
+        const formatStudent = (student) => {
+            return `${student.name} avec une moyenne de ${student.moyenne}, la meilleure note étant ${student.best} et la pire ${student.worst}.`
+        }
+
+        students.sort(compareStudent)
         console.log(students)
+
+        // Répétition de code, donc création d'une fonction 'formatStudent'
+        // console.log(`Top 3 des étudiants
+        // 1: ${students[0].name} avec une moyenne de ${students[0].moyenne},
+        // 2: ${students[1].name} avec une moyenne de ${students[1].moyenne},
+        // 3: ${students[2].name} avec une moyenne de ${students[2].moyenne}`)
+
+        console.log(`Top 3 des étudiants
+        1: ${formatStudent(students[0])},
+        2: ${formatStudent(students[1])},
+        3: ${formatStudent(students[2])}`)
 
     </script>
 </body>
