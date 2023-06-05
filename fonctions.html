@@ -101,49 +101,49 @@
         // console.log('12', isPremier(12))
 
 
-        // EXERCICE 3
-        // savoir si un mot est un palindrome
-        function isPalindrome(str) {
-            // reverse (ne prend en paramètre que des tableaux)
-            // split
-            // join
-            // toUpperCase
-            // const letters = str.split('');
-            // letters.reverse();
-            // const reversedWord = letters.join('');
-            // return str.toUpperCase() === reversedWord.toUpperCase();
+        // // EXERCICE 3
+        // // savoir si un mot est un palindrome
+        // function isPalindrome(str) {
+        //     // reverse (ne prend en paramètre que des tableaux)
+        //     // split
+        //     // join
+        //     // toUpperCase
+        //     // const letters = str.split('');
+        //     // letters.reverse();
+        //     // const reversedWord = letters.join('');
+        //     // return str.toUpperCase() === reversedWord.toUpperCase();
             
-            // OU
-            const letters = str // on a un mot
-                .split('') // que l'on explose en tableau
-                .reverse() // tableau que l'on inverse
-                .join(''); // tableau inversé que l'on rejoint par des guillemets
-            return str.toUpperCase() === letters.toUpperCase();
+        //     // OU
+        //     const letters = str // on a un mot
+        //         .split('') // que l'on explose en tableau
+        //         .reverse() // tableau que l'on inverse
+        //         .join(''); // tableau inversé que l'on rejoint par des guillemets
+        //     return str.toUpperCase() === letters.toUpperCase();
             
-            // console.log(letters);
-            // console.log(reversedWord);
+        //     // console.log(letters);
+        //     // console.log(reversedWord);
 
-        }
+        // }
 
-        const words = {
-            kayak: true,
-            SOS: true,
-            Kayak: true,
-            Bonjour: false,
-        }
-        for(let word in words) {
-            // if(isPalindrome(word) !== words[word]) {
-            //     console.error(`isPalindrome(${word}) aurait dû renvoyer ${words[word]}`)
-            // } else {
-            //     console.log(`isPalindrome(${word}) return ${isPalindrome(word)} et renvoie bien ${words[word]}`)
-            // }
+        // const words = {
+        //     kayak: true,
+        //     SOS: true,
+        //     Kayak: true,
+        //     Bonjour: false,
+        // }
+        // for(let word in words) {
+        //     // if(isPalindrome(word) !== words[word]) {
+        //     //     console.error(`isPalindrome(${word}) aurait dû renvoyer ${words[word]}`)
+        //     // } else {
+        //     //     console.log(`isPalindrome(${word}) return ${isPalindrome(word)} et renvoie bien ${words[word]}`)
+        //     // }
 
-            if(isPalindrome(word)) {
-                console.log(`${word} est un palindrome`)
-            } else {
-                console.log(`${word} n'est pas un palindrome`)
-            }
-        }
+        //     if(isPalindrome(word)) {
+        //         console.log(`${word} est un palindrome`)
+        //     } else {
+        //         console.log(`${word} n'est pas un palindrome`)
+        //     }
+        // }
 
         
 
@@ -154,67 +154,106 @@
         // on organise les élèves en fonction de la moyenne la plus élevée
         // on affiche en console un top 3 des élèves
 
-        const students = [
-            {
-                name: 'John',
-                notes: [1, 20, 18, 19, 12]
-            },
-            {
-                name: 'Jane',
-                notes: [17, 18, 20, 13, 15]
-            },
-            {
-                name: 'Sophie',
-                notes: [17, 12, 14, 15, 13]
-            },
-            {
-                name: 'Marc',
-                notes: [2, 3, 5, 8, 9]
-            },
-            {
-                name: 'Manon',
-                notes: [18, 17, 18, 19, 12]
-            }
-        ]
+        // const students = [
+        //     {
+        //         name: 'John',
+        //         notes: [1, 20, 18, 19, 12]
+        //     },
+        //     {
+        //         name: 'Jane',
+        //         notes: [17, 18, 20, 13, 15]
+        //     },
+        //     {
+        //         name: 'Sophie',
+        //         notes: [17, 12, 14, 15, 13]
+        //     },
+        //     {
+        //         name: 'Marc',
+        //         notes: [2, 3, 5, 8, 9]
+        //     },
+        //     {
+        //         name: 'Manon',
+        //         notes: [18, 17, 18, 19, 12]
+        //     }
+        // ]
 
-        const moyenne = (notes) => {
-            let sum = 0;
-            for(let note of notes) {
-                sum = sum + note;
-            }
-            //console.log(sum / notes.length);
-            return sum / notes.length;
-        }
-        //moyenne([10, 20])
+        // const moyenne = (notes) => {
+        //     let sum = 0;
+        //     for(let note of notes) {
+        //         sum = sum + note;
+        //     }
+        //     //console.log(sum / notes.length);
+        //     return sum / notes.length;
+        // }
+        // //moyenne([10, 20])
 
-        const compareStudent = (a, b) => {
-            return b.moyenne - a.moyenne  // si b > a, donnera qch de négatif ; si a > b, donnera qch de positif
-        }
+        // const compareStudent = (a, b) => {
+        //     return b.moyenne - a.moyenne  // si b > a, donnera qch de négatif ; si a > b, donnera qch de positif
+        // }
 
-        for(let student of students) {
-            student.moyenne = moyenne(student.notes);
-            student.worst = Math.min(...student.notes);
-            student.best = Math.max(...student.notes)
-        }
+        // for(let student of students) {
+        //     student.moyenne = moyenne(student.notes);
+        //     student.worst = Math.min(...student.notes);
+        //     student.best = Math.max(...student.notes)
+        // }
 
-        // pour afficher le top 3 des meilleurs élèves
-        const formatStudent = (student) => {
-            return `${student.name} avec une moyenne de ${student.moyenne}, la meilleure note étant ${student.best} et la pire ${student.worst}.`
-        }
+        // // pour afficher le top 3 des meilleurs élèves
+        // const formatStudent = (student) => {
+        //     return `${student.name} avec une moyenne de ${student.moyenne}, la meilleure note étant ${student.best} et la pire ${student.worst}.`
+        // }
 
-        students.sort(compareStudent)
-        console.log(students)
+        // students.sort(compareStudent)
+        // console.log(students)
 
-        // Répétition de code, donc création d'une fonction 'formatStudent'
+        // // Répétition de code, donc création d'une fonction 'formatStudent'
+        // // console.log(`Top 3 des étudiants
+        // // 1: ${students[0].name} avec une moyenne de ${students[0].moyenne},
+        // // 2: ${students[1].name} avec une moyenne de ${students[1].moyenne},
+        // // 3: ${students[2].name} avec une moyenne de ${students[2].moyenne}`)
+
         // console.log(`Top 3 des étudiants
-        // 1: ${students[0].name} avec une moyenne de ${students[0].moyenne},
-        // 2: ${students[1].name} avec une moyenne de ${students[1].moyenne},
-        // 3: ${students[2].name} avec une moyenne de ${students[2].moyenne}`)
+        // 1: ${formatStudent(students[0])},
+        // 2: ${formatStudent(students[1])},
+        // 3: ${formatStudent(students[2])}`)
 
-        console.log(`Top 3 des étudiants
-        1: ${formatStudent(students[0])},
-        2: ${formatStudent(students[1])},
-        3: ${formatStudent(students[2])}`)
+        // EXERCICE 5
+        // calculer la fréquence de mot dans une chaîne de caractère
+        const phrase = `Vous savez, moi je ne crois pas qu'il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd'hui avec vous, je dirais que c'est d'abord des rencontres. Des gens qui m'ont tendu la main, peut-être à un moment où je ne pouvais pas, où j'étais seul chez moi. Et c'est assez curieux de se dire que les hasards, les rencontres, forgent une destinée... Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l'interlocuteur en face je dirais, le miroir qui vous aide à avancer. Alors ça n'est pas mon cas, comme je disais là, puisque moi au contraire, j'ai pu : et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie... je ne suis qu'amour ! Et finalement, quand beaucoup de gens aujourd'hui me disent « Mais comment fais-tu pour avoir cette humanité ? », et bien je leur réponds très simplement, je leur dis que c'est ce goût de l'amour ce goût donc qui m'a poussé aujourd'hui à entreprendre une construction mécanique, mais demain qui sait ? Peut-être simplement à me mettre au service de la communauté, à faire le don, le don de soi...`;
+
+        const frequencies = {};
+
+        // pour séparer la phrase
+        const words = phrase
+            .toLowerCase()
+            .replaceAll(',', '')
+            .replaceAll('!', '')
+            .replaceAll(':', '')
+            .replaceAll('?', '')
+            .replaceAll('«', '')
+            .replaceAll('»', '')
+            .replaceAll('.', '')
+            .replaceAll('...', '')
+            .split(' ');
+        // console.log(words);
+
+        // on boucle sur chacun des mots de la liste pour les ajouter à l'objet frequencies
+        for(let word of words) {
+            if(word !== '') {
+                if(frequencies[word]) {
+                    frequencies[word]++;
+                } else {
+                    frequencies[word] = 1;
+                }
+            }
+        }
+        console.log(frequencies)
+
+        // split = découper la phrase en fonction d'espace
+        // {vous: 3, moi: 2} créer un objet qui contient les fréquences
+        // replace = pour retirer les caractères spéciaux
+        // les 3 mots qui apparaissent le plus souvent
+
+
 
     </script>
 </body>
