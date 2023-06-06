@@ -52,10 +52,25 @@
             //création d'une méthode
             // il peut passer dans la classe au-dessus si il a une moyenne > à 10
             canPass() {
-                return moyenne(this._notes) >= 10;
+                // return moyenne(this._notes) >= 10;
+                return moyenne(this._notes) >= Student.moyenne;
+            }
+
+            // avec le mot-clé 'static', on définit des choses qui ne sont pas dans le prototype des objets initialisés de cette manière là mais qui seront directement dispo sur l'objet Student (dans la console : Student.moyenne               Student.hello())
+            // pour des valeurs
+            static moyenne = 10;        // équivaut à Student.moyenne = 10;         à écrire en dehors de la class Student
+
+
+            // mais aussi pour des méthodes
+            static hello() {            // équivaut à Student.hello = () => {       à écrire en dehors de la class Student
+                                                    // }
+                console.log('Bonjour');
             }
         }
 
+
+        // john et jane sont des instances de Student
+        // on a créé des objets qui ont comme prototype le prototype créé par Student
         const john = new Student('John', 'Doe')
         const jane = new Student('Jane', 'Dupuis')
         john.notes = [19];
