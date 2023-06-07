@@ -8,77 +8,122 @@
 </head>
 <body>
     <script>
-        const moyenne = (notes) => {
-            let sum = 0;
-            for(let note of notes) {
-                sum = sum + note;
-            }
-            //console.log(sum / notes.length);
-            return sum / notes.length;
-        }
+        // const moyenne = (notes) => {
+        //     let sum = 0;
+        //     for(let note of notes) {
+        //         sum = sum + note;
+        //     }
+        //     //console.log(sum / notes.length);
+        //     return sum / notes.length;
+        // }
 
 
-        // les prototypes sont des fonctions
+        // // les prototypes sont des fonctions
         
-        // type personnalisé
-        class Student {              // class et fonction
-            // propriété
-            ecole = 'Jules Ferry';
-            _notes = [];
+        // // type personnalisé
+        // class Student {              // class et fonction
+        //     // propriété
+        //     ecole = 'Jules Ferry';
+        //     _notes = [];
 
-            // constructeur, méthode
-            constructor (firstname, lastname) {
-                //console.log(this)
-                // définir des propriétés à l'intérieur des objets 'this'
-                this.firstname = firstname;
-                this.lastname = lastname;
+        //     // constructeur, méthode
+        //     constructor (firstname, lastname) {
+        //         //console.log(this)
+        //         // définir des propriétés à l'intérieur des objets 'this'
+        //         this.firstname = firstname;
+        //         this.lastname = lastname;
+        //     }
+
+        //     // création d'une méthode
+        //         // setNotes(notes) {
+        //         //     this.notes = notes
+        //         // }
+
+        //     set notes (value) {
+        //         if(Array.isArray(value)) {
+        //             this._notes = value;
+        //         }  
+        //     }
+
+        //     get name () {
+        //         return `${this.firstname} ${this.lastname}`
+        //     }
+
+        //     //création d'une méthode
+        //     // il peut passer dans la classe au-dessus si il a une moyenne > à 10
+        //     canPass() {
+        //         // return moyenne(this._notes) >= 10;
+        //         return moyenne(this._notes) >= Student.moyenne;
+        //     }
+
+        //     // avec le mot-clé 'static', on définit des choses qui ne sont pas dans le prototype des objets initialisés de cette manière là mais qui seront directement dispo sur l'objet Student (dans la console : Student.moyenne               Student.hello())
+        //     // pour des valeurs
+        //     static moyenne = 10;        // équivaut à Student.moyenne = 10;         à écrire en dehors de la class Student
+
+
+        //     // mais aussi pour des méthodes
+        //     static hello() {            // équivaut à Student.hello = () => {       à écrire en dehors de la class Student
+        //                                             // }
+        //         console.log('Bonjour');
+        //     }
+        // }
+
+
+        // // john et jane sont des instances de Student
+        // // on a créé des objets qui ont comme prototype le prototype créé par Student
+        // const john = new Student('John', 'Doe')
+        // const jane = new Student('Jane', 'Dupuis')
+        // john.notes = [19];
+        // jane.notes = [15, 18, 19];
+        // // john.setNotes([10, 10, 9]);
+        // // jane.setNotes([15, 18, 19]);
+        // console.log(john.name);
+        // console.log(john.canPass(), jane.canPass());
+
+        // EXERCICE 1
+        // créer les différentes méthodes, getters et classes qui vont permettre de comparer les périmètres
+        class Rectangle {
+            // on a besoin de paramètre, donc constructor avec en paramètre la largeur et la hauteur
+            constructor (width, height) {
+                // initialisation
+                this.width = width;
+                this.height = height;
             }
 
-            // création d'une méthode
-                // setNotes(notes) {
-                //     this.notes = notes
-                // }
-
-            set notes (value) {
-                if(Array.isArray(value)) {
-                    this._notes = value;
-                }  
+            // propriété perimeter / fonction qui renvoie le périmètre
+            get perimeter () {
+                // return this.width * 2 + this.height * 2;
+                return (this.width + this.height) * 2;
             }
 
-            get name () {
-                return `${this.firstname} ${this.lastname}`
+            // on y accède comme une simple propriété, donc c'est un getter
+            get isValid () {
+                return this.width > 0 && this.height > 0;
             }
+        }
 
-            //création d'une méthode
-            // il peut passer dans la classe au-dessus si il a une moyenne > à 10
-            canPass() {
-                // return moyenne(this._notes) >= 10;
-                return moyenne(this._notes) >= Student.moyenne;
-            }
-
-            // avec le mot-clé 'static', on définit des choses qui ne sont pas dans le prototype des objets initialisés de cette manière là mais qui seront directement dispo sur l'objet Student (dans la console : Student.moyenne               Student.hello())
-            // pour des valeurs
-            static moyenne = 10;        // équivaut à Student.moyenne = 10;         à écrire en dehors de la class Student
-
-
-            // mais aussi pour des méthodes
-            static hello() {            // équivaut à Student.hello = () => {       à écrire en dehors de la class Student
-                                                    // }
-                console.log('Bonjour');
+        // class square qui représente un carré
+        // utilisation du système d'héritage, car le carré a les mêmes propriétés que le rectangle
+        class Square extends Rectangle {
+            // ne prend qu'une dimension
+            constructor(width) {
+                // on appelle le constructeur parent grâce au mot-clé 'super'
+                // on lui donne en paramètre la largeur, mais aussi la hauteur, qui correspond à la largeur vu que c'est un carré
+                super(width, width)
             }
         }
 
 
-        // john et jane sont des instances de Student
-        // on a créé des objets qui ont comme prototype le prototype créé par Student
-        const john = new Student('John', 'Doe')
-        const jane = new Student('Jane', 'Dupuis')
-        john.notes = [19];
-        jane.notes = [15, 18, 19];
-        // john.setNotes([10, 10, 9]);
-        // jane.setNotes([15, 18, 19]);
-        console.log(john.name);
-        console.log(john.canPass(), jane.canPass());
+
+        const r = new Rectangle(10, 20);
+        console.log(r.perimeter);
+        console.log(r.isValid);
+        const r2 = new Rectangle(-10, 20);
+        console.log(r2.perimeter)
+        console.log(r2.isValid);
+        const c = new Square(10);
+        console.log(c.perimeter);
+        console.log(c.isBiggerThan(r));
     </script>
 </body>
 </html>
