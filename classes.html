@@ -81,52 +81,155 @@
         // console.log(john.canPass(), jane.canPass());
 
         // EXERCICE 1
-        // créer les différentes méthodes, getters et classes qui vont permettre de comparer les périmètres
-        class Rectangle {
-            // on a besoin de paramètre, donc constructor avec en paramètre la largeur et la hauteur
-            constructor (width, height) {
-                // initialisation
-                this.width = width;
-                this.height = height;
+        // // créer les différentes méthodes, getters et classes qui vont permettre de comparer les périmètres
+        // class Rectangle {
+        //     // on a besoin de paramètre, donc constructor avec en paramètre la largeur et la hauteur
+        //     constructor (width, height) {
+        //         // initialisation
+        //         this.width = width;
+        //         this.height = height;
+        //     }
+
+        //     // propriété perimeter / fonction qui renvoie le périmètre
+        //     get perimeter () {
+        //         // return this.width * 2 + this.height * 2;
+        //         return (this.width + this.height) * 2;
+        //     }
+
+        //     // on y accède comme une simple propriété, donc c'est un getter
+        //     get isValid () {
+        //         return this.width > 0 && this.height > 0;
+        //     }
+
+        //     // création d'une méthode qui prend en paramètre une forme
+        //     isBiggerThan(shape) {
+        //         return this.perimeter > shape.perimeter
+        //     }
+        // }
+
+        // // class square qui représente un carré
+        // // utilisation du système d'héritage, car le carré a les mêmes propriétés que le rectangle
+        // class Square extends Rectangle {
+        //     // ne prend qu'une dimension
+        //     constructor(width) {
+        //         // on appelle le constructeur parent grâce au mot-clé 'super'
+        //         // on lui donne en paramètre la largeur, mais aussi la hauteur, qui correspond à la largeur vu que c'est un carré
+        //         super(width, width)
+        //     }
+        // }
+
+        // const r = new Rectangle(10, 20);
+        // console.log(r.perimeter);
+        // console.log(r.isValid);
+        // const r2 = new Rectangle(-10, 20);
+        // console.log(r2.perimeter)
+        // console.log(r2.isValid);
+        // const c = new Square(10);
+        // console.log(c.perimeter);
+        // // est-ce que le carré est plus grand que le rectangle ?
+        // console.log(c.isBiggerThan(r));
+        // // est-ce que le rectangle est plus grand que le carré ?
+        // console.log(r.isBiggerThan(c));
+
+        // EXERCICE 2
+        // gérer une librairie de livres, avec des objets
+        // on a besoin de 2 classes : 1 classe qui représente un livre (2 infos: le titre et le nombre de page) ; une deuxième classe qui s'appelle Library qui comportera 3 méthodes (addBook qui permet d'ajouter 1 seul livre, addBooks qui permet de prendre en paramètre un tableau de livres et qui rajoutera tous les livres à notre librairie, findBooksByLetter qui prend en paramètre une lettre et qui trouvera tous les livres qui commence par cette lettre)
+        
+        class Book {
+
+            #page = 1;
+
+            constructor (title, pages) {
+                this.title = title;
+                this.pages = pages;
+                // #page est une propriété privée
+                // this.#page = 1;
+            }
+            get page() {
+                return this.#page
             }
 
-            // propriété perimeter / fonction qui renvoie le périmètre
-            get perimeter () {
-                // return this.width * 2 + this.height * 2;
-                return (this.width + this.height) * 2;
+            nextPage() {
+                if(this.#page < this.pages) {
+                    this.#page++
+                }
             }
 
-            // on y accède comme une simple propriété, donc c'est un getter
-            get isValid () {
-                return this.width > 0 && this.height > 0;
+            // réinitialise la page
+            close() {
+                this.#page = 1
             }
         }
 
-        // class square qui représente un carré
-        // utilisation du système d'héritage, car le carré a les mêmes propriétés que le rectangle
-        class Square extends Rectangle {
-            // ne prend qu'une dimension
-            constructor(width) {
-                // on appelle le constructeur parent grâce au mot-clé 'super'
-                // on lui donne en paramètre la largeur, mais aussi la hauteur, qui correspond à la largeur vu que c'est un carré
-                super(width, width)
+        class Library {
+            // propriété qui sera un ojet vide
+            // books = {
+            //     // clé: valeur          objet qui a comme clé une lettre et les différents livres à l'intérieur
+            //     A: [...],
+            // }
+
+            // on sauvegarde les livres à l'intérieur sous forme de tableau
+            // on met tous les livres au même niveau et ensuite on utilisera une fonction pour parcourir le tableau et n'extraire que les livres qui nous intéressent
+            #books = []
+
+            // 3 méthodes
+            addBook(book) {
+                // quand on souhaite rajouter un livre, on utilise la méthode push pour pousser un élément dans ce tableau
+                this.#books.push(book)
             }
 
-            // création d'une méthode qui prend en paramètre une forme
-            isBiggerThan()
+            addBooks(books) {
+                // pour l'ajout de plusieurs livres, il faut faire une boucle pour parcourir tous les livres et les envoyer dans la librairie
+                for(let book of books) {
+                    this.addBook(book)
+                }
+            }
+
+            // findBooksByLetter(letter) {
+            //     // manière traditionnelle: création d'un tableau contenant les livres que l'on a trouvé
+            //     const found = []
+            //     // on parcoure l'ensemble des livres que l'on a trouvé dans la librairie
+            //     for(let book of this.#books) {
+            //         // on compare sans prendre en compte la casse
+            //         if(book.title[0].toLowerCase() === letter.toLowerCase()) {
+            //             found.push(book)
+            //         }
+            //     }
+            //     return found
+            // }
+
+            // OU 
+
+            // findBooksByLetter(letter) {
+            //     this.#books.filter((book) => {
+            //         return book.title[0].toLowerCase() === letter.toLowerCase()
+            //     } )
+            // }
+
+            findBooksByLetter(letter) {
+                return this.#books.filter((book) => book.title[0].toLowerCase() === letter.toLowerCase()
+                )
+            }
         }
+        
+        
+        const b = new Book('Seigneur des anneaux', 200);    // besoin d'un constructor car il y a quelque chose entre les parenthèses
+        console.log(b.page);
+        b.nextPage();
+        console.log(b.page);
+        b.close();
+        console.log(b.page);
+
+        const l = new Library();                            // pas besoin de constructor car il n'y a rien entre les parenthèses
+        l.addBook(b);
+        l.addBooks([
+            new Book('Ready player one', 100),
+            new Book('Oui-Oui', 10),
+            new Book('Sillage', 50)
+        ])
+        console.log(l.findBooksByLetter('S'));   // utiliser filter
 
 
-
-        const r = new Rectangle(10, 20);
-        console.log(r.perimeter);
-        console.log(r.isValid);
-        const r2 = new Rectangle(-10, 20);
-        console.log(r2.perimeter)
-        console.log(r2.isValid);
-        const c = new Square(10);
-        console.log(c.perimeter);
-        console.log(c.isBiggerThan(r));
     </script>
 </body>
 </html>
