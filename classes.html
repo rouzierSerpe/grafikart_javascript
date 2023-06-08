@@ -179,6 +179,13 @@
             }
 
             addBooks(books) {
+                // books.forEach(book => this.addBook(book))
+
+                // OU 
+                // books.forEach(this.addBook, this)
+
+                // OU 
+
                 // pour l'ajout de plusieurs livres, il faut faire une boucle pour parcourir tous les livres et les envoyer dans la librairie
                 for(let book of books) {
                     this.addBook(book)

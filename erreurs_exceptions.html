@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les exceptions set les erreurs</title>
+</head>
+<body>
+    <p>Les exceptions permettent de déclencher des erreurs en JS lorsque l'on a des données qui ne sont pas attendus dans notre système.</p>
+    <script>
+        class Rectangle {
+            constructor (width, height) {
+                // pour renvoyer une erreur, on utilise le mot-clé 'throw', puis une chaîne de caractère ou un nouvel objet qui est 'error' que l'on doit initialiser
+                if(width <= 0 || height <= 0) {
+                    throw new Error ('Impossible d\'avoir une forme géométrique avec des dimensions négatives.')
+                }
+                this.width = width;
+                this.height = height;
+            }
+
+            get perimeter () {
+                // return this.width * 2 + this.height * 2;
+                return (this.width + this.height) * 2;
+            }
+
+            get isValid () {
+                return this.width > 0 && this.height > 0;
+            }
+
+            isBiggerThan(shape) {
+                return this.perimeter > shape.perimeter
+            }
+        }
+
+        class Square extends Rectangle {
+            constructor(width) {
+                super(width, width)
+            }
+        }
+
+        const r = new Rectangle(10, 20);
+        console.log(r.perimeter);
+        console.log(r.isValid);
+        const r2 = new Rectangle(-10, 20);
+        console.log(r2.perimeter)
+        console.log(r2.isValid);
+        const c = new Square(10);
+        console.log(c.perimeter);
+        // est-ce que le carré est plus grand que le rectangle ?
+        console.log(c.isBiggerThan(r));
+        // est-ce que le rectangle est plus grand que le carré ?
+        console.log(r.isBiggerThan(c));
+    </script>
+</body>
+</html>
