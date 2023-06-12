@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les fonctions usuelles</title>
+</head>
+<body>
+    <p>Les méthodes sur les tableaux (array) (les plus importantes) : .map, .filter, .reduce</p>
+    <p>Les méthodes sur les objets (les plus utilisées) : .entries, .keys, .values</p>
+    <p>Les méthodes sur les fonctions (function) : .apply, .bind, .call</p>
+
+
+
+    <script>
+        const notes = [12, 17, 18];
+        console.log(notes[0]); // 12
+        console.log(notes[1]); // 17
+        console.log(notes[2]); // 14
+        // '.at' : on peut trouver des valeurs négatives
+        // donne la dernière valeur du tableau
+        console.log(notes.at(-1)); // 18
+        console.log(notes[notes.length - 1]); // 18
+
+        //'.concat' : permet de concaténer des tableaux ensembles pour pouvoir les fusionner
+        const tableau1 = ['a', 'b', 'c'];
+        const tableau2 = [1, 2, 3];
+        const tableau3 = tableau1.concat(tableau2);
+        console.log(tableau3);
+
+        // '.filter' : permet de filtrer les résultats. Pour supprimer des éléments d'un tableau
+        const notes1 = [18, 17, 11, 9, 7];
+        const goodNotes = notes.filter((note) => note >= 10);
+        console.log(goodNotes);
+
+        // pour explorer un tableau et trouver un élément en particulier
+        // '.find' : permet de récupérer le 1er élément qui correspondra à la condition
+        // '.findLast' : permet de récupérer le dernier élément qui correspond à la condition
+        // '.findIndex' : permet de renvoyer l'index de l'élément qui a été trouvé
+        // '.findLastIndex' : permet de renvoyer l'index de l'élément qui a été trouvé
+        const notes2 = [18, 17, 11, 9, 7, 49];
+        const found = notes2.find(element => element > 10);
+        const foundIndex = notes2.findIndex(element => element > 10);
+        console.log(found);         // 18
+        console.log(foundIndex);
+
+        const array1 = [5, 12, 8, 130, 44, 18];
+        const found1 = array1.find(element => element > 10);
+        const foundIndex1 = array1.findIndex(element => element > 10);
+        console.log(found1);        // Expected output: 12
+        console.log(foundIndex1);
+
+        // '.forEach' : permet d'exécuter une fonction donnée sur chaque élément du tableau
+        // manière différente des boucles pour parcourir un tableau. On peut créer une fonction de parcours qu'on peut réutiliser dans plusieurs tableaux, avec les boucles non.
+        notes2.forEach((note, index) => {
+            console.log(note, index)
+        })
+
+        // '.from' : permet de créer un tableau à partir de différentes choses. Quand qch est itérable
+        console.log(Array.from('food'));
+
+        // '.indexOf' remplaçable par la méthode '.includes'
+
+        // '.map' : prend en 1er paramètre une fonction qui va permettre d'altérer les éléments (ex :fonction de transformation d'un tableau)
+        const arrayMap = [1, 4, 8, 16];
+        const map1 = arrayMap.map(x => x * 2);
+        console.log(map1);
+
+        const persons = [
+            {firstname: 'John', lastname: 'Doe'},
+            {firstname: 'Jane', lastname: 'Smith'},
+            {firstname: 'Martin', lastname: 'Dupont'}
+        ];
+        console.log(persons
+            .map((person) => person.firstname + ' ' + person.lastname)
+            .join('\n')
+        )
+
+        // '.reduce' : prend en 1er paramètre un callback qui a 2 paramètres (un accumulateur et la valeur courante) et en 2nd paramètre, une valeur de départ (içi 0) qui sera ensuite placée dans l'accumulateur
+        console.log('la somme des notes est : ' +
+            // notes.reduce((acc, note) => {
+            //     return acc + note;
+            // }, 0)
+            
+            // OU
+            notes.reduce((acc, note) => acc + note, 0)
+        )
+        
+    </script>
+</body>
+</html>
