@@ -39,18 +39,74 @@
             }
         }
 
-        const r = new Rectangle(10, 20);
-        console.log(r.perimeter);
-        console.log(r.isValid);
-        const r2 = new Rectangle(-10, 20);
-        console.log(r2.perimeter)
-        console.log(r2.isValid);
-        const c = new Square(10);
-        console.log(c.perimeter);
-        // est-ce que le carré est plus grand que le rectangle ?
-        console.log(c.isBiggerThan(r));
-        // est-ce que le rectangle est plus grand que le carré ?
-        console.log(r.isBiggerThan(c));
+        class PromptError extends Error {
+        }
+
+        // package 1
+        // function promptRectangle() {
+        //     try {
+        //         const width = prompt('Largeur') * 1;
+        //         const height = prompt('Hauteur') * 1;
+        //         const rectangle = new Rectangle(width, height);
+        //         //console.log(rectangle.perimeter);
+        //         return rectangle;
+        //     } catch(e) {
+        //         throw new Error('Entrée utilisateur invalide')
+        //         //console.log('Impossible de construire le rectangle')
+        //     }
+        // }
+        // promptRectangle();
+
+        // package 2
+        function promptRectangle() {
+            const width = prompt('Largeur') * 1;
+            const height = prompt('Hauteur') * 1;
+            const rectangle = new Rectangle(width, height);
+            return rectangle;
+        }
+        try {
+            promptRectangle();
+        } catch(e) {
+            if(e instanceof PromptError) {
+                console.log('PromptError');
+            } else {
+                console.log('erreur classique');
+            }
+        }
+
+        // pour convertir qch en entier, méthode 'parseInt'
+        // on lui passe en premier paramètre une valeur et en second paramètre, la base (un entier compris entre 2 et 36 qui représente la base utilisée pour la valeur représentée dans la chaîne. La base communément utilisée est la base décimale et on utilisera donc 10 dans ce cas pour ce paramètre)
+        // const width = parseInt(prompt('Largeur'), 10);
+
+        // OU
+        // const width = prompt('Largeur') * 1;
+        // const height = prompt('Hauteur') * 1;
+        // const rectangle = new Rectangle(width, height);
+        // console.log(rectangle.perimeter);
+
+        // pour capturer les erreurs et afficher les messages d'erreurs ou autres
+        // try {
+        //     const r = new Rectangle(-10, 20)
+        // } catch(e) {
+        //     console.log(e)
+        //     // si on est intéressé que par le message
+        //     console.log(e.message)
+        // }
+
+        // const r = new Rectangle(10, 20);
+        // console.log(r.perimeter);
+        // console.log(r.isValid);
+        // const r2 = new Rectangle(-10, 20);
+        // console.log(r2.perimeter)
+        // console.log(r2.isValid);
+        // const c = new Square(10);
+        // console.log(c.perimeter);
+        // // est-ce que le carré est plus grand que le rectangle ?
+        // console.log(c.isBiggerThan(r));
+        // // est-ce que le rectangle est plus grand que le carré ?
+        // console.log(r.isBiggerThan(c));
+
+
     </script>
 </body>
 </html>
