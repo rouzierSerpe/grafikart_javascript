@@ -7,6 +7,90 @@
     <title>Les fonctions</title>
 </head>
 <body>
+    <h1>Les déclarations de fonctions</h1>
+    <p>function disBonjour() { <br>
+        alert('Bonjour'); <br>
+    }</p>
+
+    <h1>Les expressions de fonctions</h1>
+    <p>Pour créer une expression de fonction, nous allons utiliser une syntaxe similaire à celle-ci-dessus à la différence qu'on va cette fois-ci directement assigner notre fonction à une variable dont on choisira le nom.</p>
+    <p>let disBonjour = function() { <br>
+    alert('Bonjour'); <br>
+    } <br>
+    disBonjour();</p> <!-- Appel de la variable/fonction -->
+
+    <p>Généralement, lorsqu’on crée une fonction de cette manière, on utilise une fonction anonyme qu’on assigne ensuite à une variable. Pour appeler une fonction créée comme cela, on va pouvoir utiliser la variable comme une fonction, c’est-à-dire avec un couple de parenthèses après son nom.
+
+    Notez cependant que rien ne nous empêche cependant de donner un nom à notre fonction. Dans ce cas-là, on parlera de « NFE » pour « Named Function Expression » ou « expression de fonction nommée » en français.
+        
+    Ajouter un nom à une expression de fonction permet à la fonction de faire référence à elle-même en interne en étant sûr de s’appeler. En effet, en utilisant une expression de fonction classique, la variable qui contient l’expression de fonction peut changer de valeur dans le script et rendre notre fonction inutilisable.</p>
+    <p>let disBonjour = function bonjour(nom) { <br>
+        if(nom) { <br>
+            alert('Bonjour ' + nom); <br>
+        } else { <br>
+            bonjour('inconnu'); <br>
+        } <br>
+    }</p>
+
+    <p>De plus, le nom passé aux NFE n'est pas accessible depuis l'extérieur de la fonction. Cel garantit qu'en l'utilisant dans notre expression de fonction, il fera toujours bien référence à la fonction actuelle.</p>
+
+    <h1>Déclarations de fonctions VS expressions de fonctions</h1>
+    <p>Dans la grande majorité des cas, il est plus pratique d’utiliser une déclaration de fonction qu’une expression de fonction pour créer une fonction en JavaScript. En effet, lorsqu’on crée des fonctions en utilisant des déclarations de fonctions, celles-ci vont être immédiatement disponibles dans le script ou dans l’espace dans lequel elles ont été créées, ce qui n’est pas le cas pour les expressions de fonctions. <br>
+
+    Cela est dû au fait que les déclarations de fonctions sont les premiers éléments recherchés et lus par le JavaScript lorsqu’un script est exécuté. Les expressions de fonctions, au contraire, vont être lues dans l’ordre de leur écriture dans le script.</p>
+
+    <p>disBonjour(); // Ceci fonctionne <br>
+
+    function disBonjour(){ <br>
+        alert('Bonjour'); <br>
+    } <br>
+    
+    disAuRevoir(); // Ceci ne fonctionne pas <br>
+    
+    let disAuRevoir = function(){ <br>
+        alert('Au revoir'); <br>
+    }</p>
+
+    <h1>Les expressions de fonctions fléchées : syntaxe et intérêts</h1>
+    <p>Les fonctions fléchées sont des fonctions qui possèdent une syntaxe très compacte, ce qui les rend très rapide à écrire. Les fonctions fléchées utilisent le signe <strong>=></strong> qui leur a donné leur nom à cause de sa forme de flèche.</p>
+    <p><strong>Expression de fonction classique :</strong> <br>
+    let somme = function(a, b) { <br>
+        return a + b; <br>
+    }; <br>
+    
+    <strong>Equivalent en fonction fléchée :</strong> <br>
+    let somme = (a, b) => a + b; <br>
+    
+    alert(somme(1, 2));</p>
+
+    <p>La syntaxe des fonctions fléchées et très concise et cela est normal puisque ce sont des fonctions qui ont été faites pour être déclarées sur une seule et unique ligne. <br>
+
+    Les fonctions fléchées n’ont pas besoin du couple d’accolades classique aux fonctions pour fonctionner et n’ont pas besoin non plus d’une expression <strong>return</strong> puisque celles-ci vont automatiquement évaluer l’expression à droite du signe <strong>=></strong> et retourner son résultat. <br>
+    
+    De plus, notez que si notre fonction fléchée n’a besoin que d’un argument pour fonctionner, alors on pourra également omettre le couple de parenthèses.</p>
+
+    <p><strong>Expression de fonction classique :</strong> <br>
+    let double = function(n){ <br>
+        return n * 2 <br>
+    } <br>
+    
+    <strong>Equivalent en fonction fléchée :</strong> <br>
+    let double = n => n * 2; <br>
+    
+    alert(double(3)); <br> </p>
+
+    <p>Tout cela est vrai pour des fonctions fléchées déclarées sur une ligne. On va également pouvoir déclarer des fonctions fléchées sur plusieurs lignes, mais nous allons alors perdre beaucoup des avantages offerts par celles-ci en termes de concision du code. En effet, lorsqu’on écrit une fonction fléchée sur plusieurs lignes, alors notre fonction va à nouveau avoir besoin du traditionnel couple d’accolades ainsi qu’on précise explicitement une instruction <strong>return</strong> dans le cas où l’on souhaite que la fonction retourne une valeur.</p>
+
+    <h1>Les particularités des fonctions fléchées</h1>
+    <p>En plus de leur syntaxe très compacte, les fonctions fléchées vont posséder certains comportements différents des fonctions classiques.</p>
+    <p>Les comportements intéressants à noter ici sont que les fonctions fléchées ne possèdent pas de valeur pour <strong>this</strong> ni pour l’objet <strong>arguments</strong>.</p>
+
+    <h2>Les fonctions fléchées et le mot clé <strong>this</strong></h2>
+    <p>Pour rappel, le mot clé <strong>this</strong> est utilisé avec des méthodes d’un d’objet pour accéder à des informations stockées dans l’objet. Le mot clé this va dans ce cas être substitué par l’objet utilisant la méthode lors de son appel.</p>
+
+
+
+
     <script>
         // function canDrive (age, pays) {
         //     if(
