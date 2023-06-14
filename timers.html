@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les timers</title>
+</head>
+<body>
+    <p>le but est d'afficher qch, d'attendre 1 sec et d'afficher autre chose.</p>
+    <p>côté asynchrone du JS</p>
+
+    <script>
+        // on créé une fonction que l'on appelle 'wait', on lui passe en paramètre une durée (duration) et cette fonction va permettre d'attendre
+        // manière synchrone d'attendre
+        // function wait(duration) {
+        //     const t = Date.now();
+        //     while(Date.now() - t < duration) {
+        //     }
+        // }
+        // console.log('Bonjour');
+        // wait(1000);     // millisecondes
+        // console.log('les gens');
+
+
+        // manière asynchrone d'attendre
+        // console.log('Bonjour');
+        // setTimeout(() => {
+        //     console.log('les gens');
+        // }, 1000)
+        // console.log('Au revoir');
+
+
+        // setInterval
+        // console.log('Bonjour');
+        // setInterval(() => {
+        //     console.log('les gens');
+        // }, 1000)
+        // console.log('Au revoir');
+
+
+        //
+        // console.log('Bonjour');
+        // const t = setInterval(() => {
+        //     console.log('les gens');
+        // }, 1000)
+        // console.log(t)
+        // console.log('Au revoir');
+
+
+        // faire qch qui s'affiche 5 fois, puis créer une fonction decompte() qui fait un décompte (3, 2, 1)
+        // let i = 0;
+        // const time = setInterval(() => {
+        //     i++;
+        //     console.log('bonjour')
+        //     if (i >= 5) {
+        //         clearInterval(time);
+        //     }
+        // }, 1000);
+
+
+        // function decompte(n) {
+        //     console.log(n);
+        //     const time = setInterval(() => {
+        //         n--;
+        //         console.log(n);
+        //         if(n === 0) {
+        //             clearInterval(time);
+        //         }
+        //     }, 1000 )
+        // }
+        decompte(3)
+        decompte(5)
+
+
+        function decompte(n) {
+            console.log(n);
+            if (n === 0) {
+                return
+            }
+            setTimeout(() => {
+                decompte(n - 1)
+            }, 1000 )
+        }
+    </script>
+</body>
+</html>
