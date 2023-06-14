@@ -17,7 +17,104 @@
         console.log(++i);   // 2                                renvoie la valeur APRES l'incrémentation
         console.log(i);     // 2
 
-        // les fonctions fléchées
+        // FONCTIONS FLECHEES
+        const double = (n) => n * 2;    // équivaut à avoir mis un return
+        // OU
+        //const double = n => n * 2;    // 1 seul paramètre, donc pas besoin des parenthèses (ne marche que pour les fonctions fléchées)
+        console.log(double(3));
+
+
+        // CONDITIONS
+        const a = 3;
+        // si a est défini, je veux que ça prenne la valeur de a, sinon je veux que ça prenne une autre valeur
+        const b = a || 5;       // OU const b = a ?? 5          la valeur de a devrait être nulle ou undefined pour que la seconde valeur soit utilisée
+        console.log(b);
+
+
+        const person = {
+            firstname: 'John',
+            job: {name: 'boulanger'}
+        }
+        console.log(person.job.name);
+        console.log(person.firstname + ' est ' + person.job.name);
+        console.log(person.job?.name); // le ? devant name appellera la propriété name seulement si job est définit. si job est null ou undefined, alors il renvoie la valeur undefined
+
+
+        // DESTRUCTURATION
+        const notes = [12, 17, 18];
+        // si on ne souhaite récupérer que la première et la seconde note
+        // const premiereNote = notes[0];
+        // const secondeNote = notes[1];
+        // pour la destructuration, on utilise un tableau plutôt que de lui donner le nom d'une variable
+        const [premiereNote, secondeNote] = [12, 17, 18];
+        const [premierNote, ...autresNotes] = [12, 17, 18]
+        console.log(premiereNote, secondeNote)
+        console.log(premierNote, autresNotes)
+
+        // la destructuration fonctionne aussi avec les objets
+        const individu = {
+            firstname: 'John',
+            lastname: 'Doe',
+            age: 18
+        }
+        // pour éviter de recréer des variables, on peut faire la destructuration
+        // const firstname = person.firstname;
+        const {firstname: prenom} = {       // la constante est un objet, et on lui donne la clé que l'on souahite extraire, puis :, puis le nom de la variable que l'on souhaite appliquer
+            firstname: 'John',
+            lastname: 'Doe',
+            age: 18
+        }
+        console.log(prenom); // John        il va prendre la propriété qui correspond (firstname) et la mettre dans la constante (prenom)
+
+        // si on veut créer une variable qui a le même nom que la propriété de l'objet
+        // const {firstname, lastname} = {     // au lieu de {firstname: firstname}
+        //     firstname: 'John',
+        //     lastname: 'Doe',
+        //     age: 18
+        // }
+        // console.log(firstname, lastname);
+
+        // et aussi
+        const {firstname, ...rest} = {     // dans rest apparaitra toutes les propriétés sauf celles que l'on a extraite, içi: firstname 
+            firstname: 'John',
+            lastname: 'Doe',
+            age: 18
+        }
+        console.log(firstname, rest);
+
+
+        // MANIPULATION DES OBJETS ET DES TABLEAUX
+        const note = [1, 2];
+        // si on veut rajouter des valeurs à ce tableau, on utilise la méthode .push, mais le tableau qui en résulte est modifié
+        // note.push(3);
+        // console.log(note);
+
+        // syntaxe plus simple qui ne modifie pas le tableau d'origine. Créer un nouveau tableau et rajouter des éléments
+        [...note, 3, 4];
+        [5, 9, ...note];
+        [...note].reverse();        // permet de créer un nouveau tableau qui contient les mêmes éléments, d'inverser ce tableau sans affecter le tableau d'origine
+
+
+        // CONDITIONS
+        // on créé un message pour savoir si la personne est majeure ou non
+        const age = 14;
+        let message
+        if(age >= 18) {
+            message = 'Majeur';
+        } else {
+            message = 'Mineur';
+        }
+        console.log(message)
+
+        // Syntaxte ternaire
+        const age1 = 14;
+        // on met une condition, puis ?, puis on met la valeur que l'on souhaite assisgner si jamais la condition est vérifiée, puis :, puis valeur à assigner si la valeur est fausse
+        // const message1 = age1 >= 18 ? 'Majeur' : 'Mineur';
+        // console.log(message1);
+
+        // ou (pour écrire plus rapidement pour éviter une condition)
+        console.log(age1 >= 18 ? 'Majeur' : 'Mineur')
+
     </script>
 </body>
 </html>

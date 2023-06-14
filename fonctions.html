@@ -7,6 +7,7 @@
     <title>Les fonctions</title>
 </head>
 <body>
+    <!-- https://www.pierre-giraud.com/javascript-apprendre-coder-cours/fonction-flechee/ -->
     <h1>Les déclarations de fonctions</h1>
     <p>function disBonjour() { <br>
         alert('Bonjour'); <br>
@@ -88,9 +89,56 @@
     <h2>Les fonctions fléchées et le mot clé <strong>this</strong></h2>
     <p>Pour rappel, le mot clé <strong>this</strong> est utilisé avec des méthodes d’un d’objet pour accéder à des informations stockées dans l’objet. Le mot clé this va dans ce cas être substitué par l’objet utilisant la méthode lors de son appel.</p>
 
+    <p>let pierre = { <br>
+        nom: 'Giraud', <br>
+        prenom: 'Pierre', <br>
+        hobbies: ['Trail', 'Triathlon', 'Cuisine'], <br>
+      
+        getFullName(){ <br>
+            alert(this.prenom + ' ' + this.nom); <br>
+        } <br>
+    }; <br>
+    pierre.getFullName(); <br></p>
 
+    <p>En JavaScript, à la différence de la plupart des langages, le mot clé <strong>this</strong> n’est pas lié à un objet en particulier. En effet, la valeur de <strong>this</strong> va être évaluée au moment de l’appel de la méthode dans laquelle il est présent en JavaScript. <br>
+    Ainsi, la valeur de <strong>this</strong> ne va pas dépendre de l’endroit où la méthode a été déclarée mais de l’objet qui l’appelle. Cela permet notamment à une méthode d’être réutilisée par différents objets. <br>
+    Comme la valeur de <strong>this</strong> ne dépend pas de l’endroit où la méthode a été déclarée, on va en fait pouvoir utiliser ce mot clé dans n’importe quelle fonction.</p>
 
+    <p>let pierre = {name: 'Pierre'}; <br>
+        let mathilde = {name: 'Mathilde'}; <br>
+        
+        function disBonjour(){ <br>
+          alert('Bonjour ' + this.name); <br>
+        } <br>
+        
+        pierre.bonjour = disBonjour; <br>
+        mathilde.bonjour = disBonjour; <br>
+        
+        pierre.bonjour(); //Bonjour Pierre <br>
+        mathilde.bonjour(); //Bonjour Mathilde</p>
 
+    <p>Les fonctions fléchées, cependant, sont différentes des autres fonctions au sens où elles ne possèdent pas de valeur propre pour <strong>this</strong> : si on utilise ce mot clé dans une fonction fléchée, alors la valeur utilisée pour celui-ci sera celle du contexte de la fonction fléchée c’est-à-dire celle de la fonction englobante.</p>
+
+    <p>let pierre = { <br>
+        nom: 'Giraud', <br>
+        prenom: 'Pierre', <br>
+        hobbies: ['Trail', 'Triathlon', 'Cuisine'], <br>
+      
+        disBonjour(){ <br>
+            let bonjour = () => alert('Bonjour ' + this.prenom); <br>
+            bonjour(); <br>
+        } <br>
+    }; <br>
+    
+    pierre.disBonjour(); //Bonjour Pierre</p>
+
+    <h2>Les fonctions fléchées et l'objet arguments</h2>
+    <p>L’objet <strong>arguments</strong> est un objet qui recense les différents arguments passés à une fonction. Cet objet est une propriété disponible dans toutes les fonctions à l’exception des fonctions fléchées.
+
+    L’objet <strong>arguments</strong> est semblable à un tableau et contient une entrée pour chaque argument passé à la fonction, l’indice de la première entrée commençant à 0.
+        
+    Aujourd’hui, on préfèrera cependant manipuler les arguments en utilisant les paramètres du reste plutôt que cet objet tant que possible.</p>
+    
     <script>
         // function canDrive (age, pays) {
         //     if(
